@@ -85,6 +85,13 @@ Player.prototype.update = function(dt) {
         this.reset();
     }
 
+    if (this.x >= rock.x - 10 && this.x <= rock.x + 10) {
+        if (this.y >= rock.y - 10 && this.y <= rock.y + 10) {
+            this.x = -50;
+            this.y = -50;
+        }
+    }
+
 };
 
 Player.prototype.handleInput = function(direction) {
@@ -147,12 +154,7 @@ var Rock = function(x, y) {
 
 Rock.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    if (player.x >= this.x - 60 && player.x <= this.x + 60) {
-        if (player.y >= this.y - 60 && player.y <= this.y + 60) {
-            player.x = player.x;
-            player.y = player.y;
-        }
-    }
+
 };
 
 
@@ -217,10 +219,4 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-// This is just a sample script. Paste your real code (javascript or HTML) here.
 
-if ('this_is' == /an_example/) {
-    of_beautifier();
-} else {
-    var a = b ? (c % d) : e[f];
-}
